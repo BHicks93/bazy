@@ -20,8 +20,7 @@ export default function Info() {
             
             <div className="contact-details">
               <a href="mailto:info@bazyinc.com">info@bazyinc.com</a>
-              <a href="https://instagram.com" target="_blank">Instagram</a>
-              <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+              <a href="https://www.linkedin.com/company/bazy-inc" target="_blank">LinkedIn</a>
             </div>
           </div>
 

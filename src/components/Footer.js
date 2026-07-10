@@ -18,12 +18,12 @@ export default function Footer() {
         
         {/* BOTTOM SECTION: Grid Navigation & Copyright */}
         <div className="footer-bottom">
-          <div className="footer-links-grid">
+          {/*<div className="footer-links-grid">
             <div className="footer-nav-column">
-              <Link href="/">Home</Link>
               <Link href="/">Work</Link>
-              <Link href="/info">About</Link>
+              <Link href="/info">Info</Link>
               <Link href="/info">Contact</Link>
+              <a href="https://www.linkedin.com/company/bazy-inc" target="_blank" rel="noreferrer">LinkedIn</a>
             </div>
             
             <div className="footer-nav-column">
@@ -31,7 +31,7 @@ export default function Footer() {
               <a href="https://dribbble.com" target="_blank" rel="noreferrer">Dribbble</a>
               <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
             </div>
-          </div>
+          </div>*/}
 
           <div className="footer-copyright">
             <p>© {currentYear} Bazy Inc. All rights reserved.</p>

@@ -32,7 +32,7 @@ export default function ProjectContent({ project }) {
               className="about-project-btn" 
               onClick={() => setIsOpen(!isOpen)}
             >
-              About the project {isOpen ? '-' : '+'}
+              Read {isOpen ? 'less' : 'more'}
             </button>
           )}
         </div>
