@@ -1,0 +1,571 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #0a0a0a; 
+  color: #ffffff; 
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --- HEADER --- */
+
+/* This wrapper locks the nav to the top of the screen */
+.header-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2vw 4vw; /* Matches your body padding */
+  display: flex;
+  justify-content: center; /* Keeps the shrinking header centered */
+  z-index: 100;
+  transition: padding 0.5s ease;
+  pointer-events: none; /* Allows you to click things underneath the wrapper box */
+}
+
+/* When scrolled, we push it slightly down from the top edge */
+.header-wrapper.scrolled {
+  padding-top: 2vh; 
+}
+
+/* This is the actual visible header bar */
+.site-header {
+  width: 100%; /* Starts full width */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 100px; /* Ready for the pill shape */
+  padding: 1rem 0; /* Base padding when at the top */
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto; /* Restores clickability to the nav links */
+}
+
+/* THE MAGIC: What happens to the header when the wrapper has the 'scrolled' class */
+.header-wrapper.scrolled .site-header {
+  width: 90%; 
+  max-width: 800px; /* Shrinks the width */
+  padding: 1rem 2.5rem; /* Pushes the text inward slightly */
+  
+  /* Creates the dark frosted glass effect */
+  background-color: rgba(20, 20, 20, 0.7); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle glowing edge */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Floaty drop shadow */
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.main-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+/* --- HERO --- */
+.hero {
+  padding: 10vh 0;
+  max-width: 900px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* --- PROJECT GRID BASE --- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* Divides the page into 12 columns */
+  gap: 4vw;
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+}
+
+/* --- PROJECT GRID BASE --- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 4vw;
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+}
+
+/* The outer motion container */
+.project-card {
+  display: block; 
+}
+
+/* The actual clickable link inside the container */
+.project-card-link {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: opacity 0.3s ease;
+  height: 100%;
+}
+
+.project-card-link:hover {
+  opacity: 0.7;
+}
+
+.project-image-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: #1c1c1c;
+  border-radius: 4px;
+}
+
+.project-info h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.project-info p {
+  color: #888888;
+  font-size: 1rem;
+}
+
+.project-image-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: #1c1c1c; /* Dark grey placeholder */
+  border-radius: 4px;
+}
+
+.project-info h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.project-info p {
+  color: #888888; /* Subdued grey for client names */
+  font-size: 1rem;
+}
+
+/* --- ASYMMETRICAL GRID LOGIC --- */
+
+/* Project 1: Full Width */
+.project-card:nth-child(1) {
+  grid-column: span 12;
+}
+.project-card:nth-child(1) .project-image-placeholder {
+  aspect-ratio: 16 / 7; /* Makes the first image panoramic so it isn't overly tall */
+}
+
+/* Projects 2 & 6: Wide on the Left */
+.project-card:nth-child(2),
+.project-card:nth-child(6) {
+  grid-column: span 7;
+}
+
+/* Projects 3 & 7: Narrow on the Right */
+.project-card:nth-child(3),
+.project-card:nth-child(7) {
+  grid-column: span 5;
+}
+
+/* Projects 4 & 8: Narrow on the Left */
+.project-card:nth-child(4),
+.project-card:nth-child(8) {
+  grid-column: span 5;
+}
+
+/* Projects 5 & 9: Wide on the Right */
+.project-card:nth-child(5),
+.project-card:nth-child(9) {
+  grid-column: span 7;
+}
+
+/* Mobile Fallback: Stack everything neatly on phones */
+@media (max-width: 768px) {
+  .project-card:nth-child(n) {
+    grid-column: span 12;
+  }
+  .project-card:nth-child(1) .project-image-placeholder {
+    aspect-ratio: 4 / 3; 
+  }
+}
+/* --- INFO & CONTACT PAGE --- */
+.info-page {
+  padding-top: 15vh; /* Pushes content below the floating header */
+  min-height: 100vh;
+}
+
+.info-layout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 4vw;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Left side takes 5 columns */
+.info-text {
+  grid-column: span 5;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.info-text h1 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.info-text p {
+  color: #888888;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.contact-details a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: #333;
+  transition: text-decoration-color 0.3s ease;
+}
+
+.contact-details a:hover {
+  text-decoration-color: #fff;
+}
+
+/* Right side takes 6 columns and shifts over by 1 */
+.info-form-container {
+  grid-column: 7 / span 6;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  color: #888888;
+}
+
+.input-group input,
+.input-group textarea {
+  background-color: #111111;
+  border: 1px solid #222222;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Sleek focus state when typing */
+.input-group input:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: #555555;
+  background-color: #1a1a1a;
+}
+
+.submit-btn {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: flex-start; /* Keeps the button from stretching */
+  margin-top: 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.submit-btn:hover {
+  opacity: 0.8;
+}
+
+/* Mobile responsive stacking */
+@media (max-width: 768px) {
+  .info-text, .info-form-container {
+    grid-column: span 12;
+  }
+  .info-form-container {
+    margin-top: 3rem;
+  }
+}
+/* --- CASE STUDY PAGES --- */
+.case-study-page {
+  padding-top: 20vh; 
+}
+
+.case-study-header,
+.case-study-hero-media,
+.case-study-content {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.case-study-header {
+  margin-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.case-study-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* Aligns the button with the bottom of the client name */
+  flex-wrap: wrap; /* Allows it to stack nicely on mobile */
+  gap: 2rem;
+}
+
+.case-study-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.case-study-titles h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.project-meta-text {
+  color: #888888;
+  font-size: 1.25rem;
+}
+
+.case-study-hero-media {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Panoramic cinematic ratio for the hero */
+  background-color: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 5vh;
+}
+
+.case-study-hero-media video,
+.case-study-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.case-study-body {
+  padding: 5vh 0 15vh 0;
+  font-size: 1.2rem;
+  color: #cccccc;
+}
+/* --- CASE STUDY CONTENT (Text & Gallery) --- */
+.case-study-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10vh;
+  padding-bottom: 15vh;
+}
+
+/* The Toggle Button Styling */
+.about-project-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #333333;
+  padding: 0.75rem 1.5rem;
+  border-radius: 100px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 0.25rem; /* Optical alignment tweak */
+}
+
+.about-project-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.case-study-description {
+  max-width: 800px;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #cccccc;
+}
+
+/* Add spacing between paragraphs and headings in the Rich Text */
+.case-study-description p {
+  margin-bottom: 1.5rem;
+}
+
+.case-study-description h2, 
+.case-study-description h3 {
+  color: #ffffff;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+/* Stack the gallery images cleanly */
+.case-study-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+  width: 100%;
+}
+
+.case-study-gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background-color: #111111; /* Fallback color while loading */
+}
+
+/* --- FOOTER REVEAL --- */
+main {
+  position: relative;
+  z-index: 2; /* Sits on top of the footer */
+  background-color: #0a0a0a; 
+  min-height: 100vh; /* Ensures short pages still cover the footer */
+  margin-bottom: 0;
+  transform: translate3d(0, 0, 0);
+  padding: 2vw 4vw;
+}
+
+/* --- FOOTER --- */
+.site-footer {
+  padding: 15vh 4vw 4vw 4vw;
+  background-color: #818181;
+  border-top: 1px solid #1a1a1a;
+  
+  /* Sticky Reveal */
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15vh; /* Massive spacing between CTA and the bottom links */
+}
+
+/* -- Top CTA Section -- */
+.footer-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.footer-label {
+  font-size: 1rem;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-cta h2 {
+  font-size: clamp(3rem, 7vw, 6rem); /* Scales beautifully on desktop and mobile */
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  max-width: 800px;
+}
+
+.lets-talk-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1.25rem 3rem;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 100px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.lets-talk-btn:hover {
+  background-color: #dddddd;
+  transform: translateY(-4px); /* Slight lift effect on hover */
+}
+
+/* -- Bottom Grid Section -- */
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.footer-links-grid {
+  display: flex;
+  gap: 10vw; /* Spacing between the columns */
+}
+
+.footer-nav-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-nav-column a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: #333;
+  transition: text-decoration-color 0.3s ease;
+}
+
+.footer-nav-column a:hover {
+  text-decoration-color: #ffffff;
+}
+
+/* -- Copyright -- */
+.footer-copyright {
+  border-top: 1px solid #1a1a1a;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  color: #666666;
+  font-size: 0.95rem;
+}
+
+/* -- Mobile Adjustments -- */
+@media (max-width: 768px) {
+  .footer-links-grid {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
