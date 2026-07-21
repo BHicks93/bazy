@@ -6,8 +6,8 @@
 
 body {
   font-family: var(--font-manrope), sans-serif;
-  background-color: #0a0a0a; 
-  color: #ffffff; 
+  background-color: #fff; 
+  color: #000; 
 }
 
 a {
@@ -62,11 +62,9 @@ select {
   padding: 1rem 2.5rem; /* Pushes the text inward slightly */
   
   /* Creates the dark frosted glass effect */
-  background-color: rgba(20, 20, 20, 0.7); 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle glowing edge */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Floaty drop shadow */
+  background-color: rgba(255, 255, 255, 0.9); 
+  backdrop-filter: blur(3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Floaty drop shadow */
 }
 
 .logo {
@@ -82,7 +80,8 @@ select {
 
 /* --- HERO --- */
 .hero {
-  padding: 10vh 0;
+  padding-top: 40vh;
+  padding-bottom: 10vh;
   max-width: 900px;
 }
 
@@ -131,8 +130,8 @@ select {
 .project-image-placeholder {
   width: 100%;
   aspect-ratio: 4 / 3;
-  background-color: #1c1c1c;
-  border-radius: 4px;
+  background-color: #dbdbdb;
+  border-radius: 20px;
 }
 
 .project-info h2 {
@@ -145,22 +144,6 @@ select {
   font-size: 1rem;
 }
 
-.project-image-placeholder {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  background-color: #1c1c1c; /* Dark grey placeholder */
-  border-radius: 4px;
-}
-
-.project-info h2 {
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-
-.project-info p {
-  color: #888888; /* Subdued grey for client names */
-  font-size: 1rem;
-}
 
 /* --- ASYMMETRICAL GRID LOGIC --- */
 
@@ -252,15 +235,16 @@ select {
 }
 
 .contact-details a {
-  color: #ffffff;
+  color: #888888;
   text-decoration: underline;
   text-underline-offset: 4px;
-  text-decoration-color: #333;
+  text-decoration-color: #888888;
   transition: text-decoration-color 0.3s ease;
 }
 
 .contact-details a:hover {
-  text-decoration-color: #fff;
+  color: #000;
+  text-decoration-color: #000;
 }
 
 /* Right side takes 6 columns and shifts over by 1 */
@@ -287,11 +271,11 @@ select {
 
 .input-group input,
 .input-group textarea {
-  background-color: #111111;
-  border: 1px solid #222222;
-  color: #ffffff;
+  background-color: #f4f4f4;
+  border: 1px solid #c3c3c3;
+  color: #000;
   padding: 1rem;
-  border-radius: 6px;
+  border-radius: 14px;
   font-family: inherit;
   font-size: 1rem;
   transition: border-color 0.3s ease, background-color 0.3s ease;
@@ -302,14 +286,14 @@ select {
 .input-group textarea:focus {
   outline: none;
   border-color: #555555;
-  background-color: #1a1a1a;
+  background-color: #fff;
 }
 
 .submit-btn {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #888888;
   padding: 1rem 2rem;
-  border: none;
   border-radius: 100px;
   font-weight: 400;
   font-size: 1rem;
@@ -320,7 +304,10 @@ select {
 }
 
 .submit-btn:hover {
-  opacity: 0.8;
+  background-color: #fff;
+  color: #000;
+  border-color: #888888;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Mobile responsive stacking */
@@ -381,7 +368,7 @@ select {
   width: 100%;
   aspect-ratio: 16 / 9; /* Panoramic cinematic ratio for the hero */
   background-color: #111;
-  border-radius: 8px;
+  border-radius: 20px;
   overflow: hidden;
   margin-bottom: 5vh;
 }
@@ -396,7 +383,7 @@ select {
 .case-study-body {
   padding: 5vh 0 15vh 0;
   font-size: 1.2rem;
-  color: #cccccc;
+  color: #000;
 }
 /* --- CASE STUDY CONTENT (Text & Gallery) --- */
 .case-study-content {
@@ -409,8 +396,8 @@ select {
 /* The Toggle Button Styling */
 .about-project-btn {
   background-color: transparent;
-  color: #ffffff;
-  border: 1px solid #333333;
+  color: #000;
+  border: 1px solid #888888;
   padding: 0.75rem 1.5rem;
   border-radius: 100px;
   font-size: 1rem;
@@ -420,16 +407,17 @@ select {
 }
 
 .about-project-btn:hover {
-  background-color: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
+  background-color: #fff;
+  color: #000;
+  border-color: #888888;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .case-study-description {
   max-width: 800px;
   font-size: 1.25rem;
   line-height: 1.6;
-  color: #fff;
+  color: #000;
 }
 
 /* Add spacing between paragraphs and headings in the Rich Text */
@@ -456,16 +444,16 @@ select {
 .case-study-gallery img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
-  background-color: #111111; /* Fallback color while loading */
+  border-radius: 20px;
+  background-color: #FAF9F6; /* Fallback color while loading */
 }
 
 /* --- FOOTER REVEAL --- */
 main {
   position: relative;
-  z-index: 2; /* Sits on top of the footer */
-  background-color: #0a0a0a; 
-  min-height: 100vh; /* Ensures short pages still cover the footer */
+  z-index: 2; 
+  background-color: #fff; 
+  min-height: 100vh;
   margin-bottom: 0;
   transform: translate3d(0, 0, 0);
   padding: 2vw 4vw;
@@ -474,8 +462,7 @@ main {
 /* --- FOOTER --- */
 .site-footer {
   padding: 15vh 4vw 4vw 4vw;
-  background-color: #131dd0;
-  border-top: 1px solid #1a1a1a;
+  background-color: #FAF9F6;
   
   /* Sticky Reveal */
   position: sticky;
@@ -516,8 +503,8 @@ main {
 
 .lets-talk-btn {
   display: inline-block;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #000;
+  color: #fff;
   padding: 1rem 2rem;
   border: none;
   border-radius: 100px;
@@ -530,46 +517,18 @@ main {
 }
 
 .lets-talk-btn:hover {
-  background-color: #dddddd;
-}
-
-/* -- Bottom Grid Section -- */
-.footer-bottom {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.footer-links-grid {
-  display: flex;
-  gap: 10vw; /* Spacing between the columns */
-}
-
-.footer-nav-column {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.footer-nav-column a {
-  color: #ffffff;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-color: #333;
-  transition: text-decoration-color 0.3s ease;
-}
-
-.footer-nav-column a:hover {
-  text-decoration-color: #ffffff;
+  background-color: #1c1c1c;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* -- Copyright -- */
 .footer-copyright {
-  border-top: 1px solid #b3b3b3;
+  border-top: 1px solid #333333;
   padding-top: 2rem;
   display: flex;
   justify-content: space-between;
-  color: #cecece;
+  color: #333333;
   font-size: 0.8rem;
 }
 
